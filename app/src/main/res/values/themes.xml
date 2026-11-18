@@ -1,0 +1,11 @@
+<resources>
+    <color name="brand">#C62828</color>
+    <color name="brand_dark">#8E0000</color>
+    <color name="icon_bg">#FFFFFF</color>
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand</item>
+        <item name="colorPrimaryContainer">#FFDAD6</item>
+        <item name="colorOnPrimaryContainer">#410002</item>
+        <item name="android:statusBarColor">@color/brand_dark</item>
+    </style>
+</resources>

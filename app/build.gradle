@@ -1,0 +1,43 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.bahadir.pdfbirlestir'
+    compileSdk 34
+    defaultConfig {
+        applicationId 'com.bahadir.pdfbirlestir'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+    signingConfigs {
+        release {
+            storeFile file('pdf-release.jks')
+            storePassword 'pdfbirlestir2026'
+            keyAlias 'pdfbirlestir'
+            keyPassword 'pdfbirlestir2026'
+        }
+    }
+    buildTypes {
+        release {
+            // Kucultme/obfuscation kapali: PdfBox reflection kullaniyor, guvenli tarafta kaliyoruz.
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    packaging {
+        resources { excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE*', 'META-INF/NOTICE*'] }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'com.google.android.material:material:1.12.0'
+    // Apache 2.0 lisansli PDFBox Android portu: sayfa nesnelerini yeniden kodlamadan kopyalar
+    implementation 'com.tom-roush:pdfbox-android:2.0.27.0'
+}
